@@ -1,11 +1,65 @@
 h1{
-    color:rgb(255, 0, 0)
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin: 1rem 0;
+    line-height: 1.1;
+    /* gradient text for a striking different color while keeping contrast */
+    background: linear-gradient(90deg, #60d1ff 0%, #7b61ff 50%, #ff7ab6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
 }
-html {
-    background-color: rgba(13, 13, 17, 0.829);
+/* full-page background: layered gradients with subtle motion */
+html, body {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    color: whitesmoke;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+body::before{
+    /* moving colored highlights using two soft radial gradients over a dark base */
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255,100,180,0.08), transparent 15%),
+        radial-gradient(circle at 80% 80%, rgba(100,180,255,0.06), transparent 20%),
+        linear-gradient(135deg, #0d0f17 0%, #0f1116 30%, #101217 60%, #0d0f17 100%);
+    background-size: 200% 200%, 200% 200%, 100% 100%;
+    filter: saturate(110%) contrast(105%);
+    animation: bg-ozone 20s linear infinite;
+}
+
+body::after{
+    /* subtle vignette to focus content */
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.45) 100%);
+}
+
+@keyframes bg-ozone{
+    0%{ background-position: 0% 0%, 0% 0%, 0% 0%; }
+    50%{ background-position: 100% 50%, 50% 100%, 0% 0%; }
+    100%{ background-position: 0% 0%, 0% 0%, 0% 0%; }
 }
 p{
-    color:chocolate; 
+    color: #ffd686; /* warm readable color on dark background */
+    font-size: 1.05rem;
+    line-height: 1.45;
+    font-weight: 500;
+    margin: 0 0 1rem 0;
+    max-width: 70ch;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
 }
 a{
     color:whitesmoke;
@@ -19,6 +73,16 @@ a{
     margin: 8px;
 }
 
+/* gallery layout: side-by-side, responsive wrapping */
+.gallery{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 1rem 0 2rem 0;
+}
+
 .rainbow::before{
     content: "";
     position: absolute;
@@ -27,8 +91,8 @@ a{
     padding: 0;
     /* animate the gradient's starting angle so colors move but the ring doesn't rotate */
     --angle: 0deg;
-    /* hue offset for palette shifting */
-    --h: 0deg;
+    /* default hue offset (set to cool blue tones) */
+    --h: 210deg;
     background: conic-gradient(from var(--angle),
         hsl(calc(var(--h) + 0deg) 100% 55%),
         hsl(calc(var(--h) + 60deg) 100% 55%),
@@ -44,6 +108,29 @@ a{
     padding: 6px; /* thickness of the rainbow ring */
     z-index: 0;
     animation: rainbow-hue 6s linear infinite, rainbow-shift 10s linear infinite;
+}
+
+/* palette helpers: add one of these classes to a .rainbow to change the color set */
+.rainbow.palette-warm::before{
+    /* warm orange/red/yellow */
+    --h: 24deg;
+}
+
+.rainbow.palette-cool::before{
+    /* cool blue/cyan/purple */
+    --h: 210deg;
+}
+
+.rainbow.palette-pastel::before{
+    /* soft pastel band (explicit stops) */
+    background: conic-gradient(from var(--angle),
+        hsl(340 80% 85%),
+        hsl(30 90% 85%),
+        hsl(200 80% 90%),
+        hsl(260 70% 90%),
+        hsl(320 70% 90%),
+        hsl(10 80% 90%)
+    );
 }
 
 @keyframes rainbow-hue{
