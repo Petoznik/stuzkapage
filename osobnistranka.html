@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petr Pavlica</title>
+    <style>
+        html, body { height: 100%; }
+        body{
+            margin: 0;
+            min-height: 100vh;
+            position: relative;
+            padding: 3.5rem 2.5rem 2.5rem 2.5rem; /* more top padding so title sits near top */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* center horizontally */
+            justify-content: flex-start; /* align content to top */
+            gap: 0.8rem;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            color: #fff;
+            background:
+                /* very subtle purple highlight */
+                radial-gradient(circle at 10% 20%, rgba(123,97,255,0.02), transparent 10%),
+                /* faint secondary tone */
+                radial-gradient(circle at 80% 80%, rgba(80,60,120,0.02), transparent 14%),
+                /* primary dark gray base with a hint of cool tone */
+                linear-gradient(135deg, #0b0b10 0%, #0e0e12 35%, #0c0c0f 70%, #050506 100%),
+                radial-gradient(ellipse at center, rgba(0,0,0,0.18), rgba(0,0,0,0.62));
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin: 0;
+            line-height: 1.02;
+            color: #ffffff;
+            text-shadow: 0 3px 12px rgba(0,0,0,0.55);
+        }
+
+        p{
+            color: #ffffff; /* make paragraphs white */
+            margin: 0 0 0.6rem 0;
+            font-size: 1.12rem; /* a bit larger */
+            line-height: 1.6;
+            font-weight: 500;
+            max-width: 70ch;
+            text-align: left;
+            align-self: flex-start; /* push paragraphs to the left side of the page */
+        }
+        .photo{
+            border: 6px solid #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            display: block;
+            margin-top: 0.8rem;
+        }
+        /* figure wrapper for image + caption */
+        .figure{
+            display: block;
+            text-align: center;
+            margin-top: 0.8rem;
+        }
+
+        .figure .caption{
+            color: #ffffff;
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+
+        .figure.top-right{
+            position: absolute;
+            top: 1.25rem; /* align near the top padding */
+            right: 1.25rem; /* align near the right padding */
+            margin-top: 0;
+            z-index: 20;
+        }
+        /* layout for image next to bio text */
+        .bio{
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .bio .figure{
+            margin-top: 0;
+        }
+
+        .bio-text{
+            flex: 1 1 auto;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+   <h1>Petr Pavlica</h1>
+
+   <div class="bio">
+       <figure class="figure">
+           <img class="photo" src="received_2408287439507727.jpg" alt="Petr" width="300" height="400">
+           <figcaption class="caption">Já v práci se Žralokem a Jonym</figcaption>
+       </figure>
+
+       <div class="bio-text">
+           <p>Je mi 17 let</p>
+           <p>Jsem student obchodní akademie v Uherském Hradišti, chodím do 3. ročníku<time datetime=""></time></p>
+           <p>Rád chodím do fitka</p>
+           <p>Chodím na brigádu do McDonald's</p>
+       </div>
+   </div>
+
+    <figure class="figure top-right">
+        <img class="photo" src="Bez názvu.png" alt="Nice" width="300" height="400">
+        <figcaption class="caption">Já v autobuse</figcaption>
+    </figure>
+</body>
+</html>
