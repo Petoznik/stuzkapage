@@ -1,0 +1,16 @@
+h1{
+    color:rgb(255, 0, 212)
+}
+html {
+    background-color: rgba(26, 26, 31, 0.938);
+}
+p{
+    color:chocolate; 
+}
+a{
+    color:whitesmoke;
+}
+img{
+    width:333px ;
+    height: 400px;
+}
