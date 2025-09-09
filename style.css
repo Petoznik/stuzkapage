@@ -71,6 +71,9 @@ a{
     border-radius: 12px;
     position: relative;
     margin: 8px;
+    transform-origin: center center;
+    /* rotate the whole container (border + image) */
+    animation: spin 12s linear infinite;
 }
 
 /* gallery layout: side-by-side, responsive wrapping */
@@ -139,6 +142,10 @@ a{
 
 @keyframes rainbow-shift{
     to { --h: 360deg; }
+}
+
+@keyframes spin{
+    to { transform: rotate(360deg); }
 }
 
 /* image itself */
