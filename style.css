@@ -1,8 +1,8 @@
 h1{
-    color:rgb(255, 0, 212)
+    color:rgb(255, 0, 0)
 }
 html {
-    background-color: rgba(26, 26, 31, 0.938);
+    background-color: rgba(13, 13, 17, 0.829);
 }
 p{
     color:chocolate; 
@@ -10,7 +10,64 @@ p{
 a{
     color:whitesmoke;
 }
+/* container for the animated rainbow border */
+.rainbow{
+    display: inline-block;
+    padding: 6px; /* space for the border */
+    border-radius: 12px;
+    position: relative;
+    margin: 8px;
+}
+
+.rainbow::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 0;
+    /* animate the gradient's starting angle so colors move but the ring doesn't rotate */
+    --angle: 0deg;
+    /* hue offset for palette shifting */
+    --h: 0deg;
+    background: conic-gradient(from var(--angle),
+        hsl(calc(var(--h) + 0deg) 100% 55%),
+        hsl(calc(var(--h) + 60deg) 100% 55%),
+        hsl(calc(var(--h) + 120deg) 100% 55%),
+        hsl(calc(var(--h) + 180deg) 100% 55%),
+        hsl(calc(var(--h) + 240deg) 100% 55%),
+        hsl(calc(var(--h) + 300deg) 100% 55%)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 6px; /* thickness of the rainbow ring */
+    z-index: 0;
+    animation: rainbow-hue 6s linear infinite, rainbow-shift 10s linear infinite;
+}
+
+@keyframes rainbow-hue{
+    to { --angle: 360deg; }
+}
+
+@keyframes rainbow-shift{
+    to { --h: 360deg; }
+}
+
+/* image itself */
 img{
-    width:333px ;
+    width: 333px;
     height: 400px;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.rainbow img:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.7);
+    transition: transform 160ms ease, box-shadow 160ms ease;
 }
