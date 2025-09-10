@@ -126,3 +126,10 @@ nav {
     width: 45%;
         height: 80%;
  }
+ .copy {
+    text-align: center;
+    font-size: 1rem;
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(255, 238, 0, 0.801);
+    margin-top: 100%;
+ }
