@@ -58,16 +58,16 @@ body::after{
     100%{ background-position: 0% 0%, 0% 0%, 0% 0%; }
 }
 p{
-    color: #ffd686; /* warm readable color on dark background */
-    font-size: 1.05rem;
+    color: #ffffff; /* warm readable color on dark background */
+    font-size: 1.1rem;
     line-height: 1.45;
     font-weight: 500;
     margin: 0 0 1rem 0;
     max-width: 70ch;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+    text-shadow: 0 1px 2px rgb(255, 238, 0, 0.801);
 }
 a{
-    color:whitesmoke;
+    color:rgb(255, 196, 0);
 }
 /* container for the animated rainbow border */
 .rainbow{
@@ -90,3 +90,39 @@ a{
     justify-content: center;
     margin: 1rem 0 2rem 0;
 }
+nav {
+      background-color: #333;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-start;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffcc00; /* barva po najetí */
+    }
+
+    iframe{
+        border: 10px solid rgb(255, 255, 255);
+        border-radius: 20px;  
+ }
+ img{
+    border-radius: 20px;
+ }
+ 
+
+.mapy1 {
+    text-align: center;
+ }
+ .mapy2 {
+    text-align: center;
+ }
+ div{
+    width: 45%;
+        height: 80%;
+ }
