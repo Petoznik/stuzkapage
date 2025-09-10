@@ -4,11 +4,15 @@ h1{
     margin: 1rem 0;
     line-height: 1.1;
     /* gradient text for a striking different color while keeping contrast */
-    background: linear-gradient(90deg, #60d1ff 0%, #7b61ff 50%, #ff7ab6 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    text-shadow: 0 2px 6px rgba(255, 0, 0, 0.45);
+    text-underline-offset: 10px; color: whitesmoke;
+    text-underline-position: below; text-decoration: underline  rgb(255, 255, 255);
+
+    
 }
 /* full-page background: layered gradients with subtle motion */
 html, body {
