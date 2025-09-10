@@ -109,10 +109,21 @@ nav {
 
     iframe{
         border: 10px solid rgb(255, 255, 255);
-        border-radius: 20px;  
+        border-radius: 20px;
+        width: 1600px;  
+        height: 700px;
+        margin-top: 10%;
+        margin-left: 15%;
+        margin-right: 15%;
  }
  img{
     border-radius: 20px;
+        border-radius: 20px;
+        width: 1600px;  
+        height: 700px;
+        margin-top: 10%;
+        margin-left: 15%;
+        margin-right: 15%;
  }
  
 
@@ -132,5 +143,5 @@ nav {
     color: #ffffff;
     text-shadow: 0 2px 6px rgba(255, 238, 0, 0.801);
     margin-top: 100%;
-    margin-left: 30%;
+    margin-left: 35%;
  }
