@@ -134,7 +134,11 @@ main {
 
 .mapy1, .mapy2 {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 2%;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(255, 238, 0, 0.801);
 }
 
 
@@ -143,7 +147,6 @@ main {
   width: 90%;        /* take up to 90% of screen width */
   max-width: 1200px; /* prevent them from being too huge */
   aspect-ratio: 16 / 9; /* keep consistent ratio */
-  margin: 40px auto; /* center */
   overflow: hidden;  /* makes rounded corners apply */
 }
 
@@ -170,3 +173,17 @@ html, body {
 
 }
 
+.social-icons {
+  display: flex;          /* puts children in a row */
+  gap: 20%;              /* space between images */
+  margin-left: 6.5%;
+  justify-content: flex-start; /* align left; can also use center or space-around */
+  align-items: center;    /* vertically center if needed */
+}
+
+.tiktok, .instagram {
+  border: 6px solid #ffffff;
+  border-radius: 200px;
+  width: 300px;
+  height: auto;
+}
