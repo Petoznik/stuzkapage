@@ -173,12 +173,7 @@ html, body {
 
 }
 
-.social-icons {
-  display: flex;          /* puts children in a row */
-  gap: 20%;              /* space between images */
-  margin-left: 6.5%;
-  justify-content: flex-start; /* align left; can also use center or space-around */
-  align-items: center;    /* vertically center if needed */
+
 }
 
 .tiktok, .instagram {
@@ -187,3 +182,49 @@ html, body {
   width: 300px;
   height: auto;
 }
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;          /* allows wrapping on small screens */
+    gap: 40px;                /* space between each icon+text */
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.icon-wrap {
+    display: flex;
+    flex-direction: column;   /* stack image + text vertically */
+    align-items: center;      /* center text under image */
+    text-align: center;
+    text-decoration: none;    /* remove underline for link */
+    color: #fff;              /* text color */
+}
+
+.icon-wrap img {
+    width: 20vw;              /* responsive size */
+    max-width: 300px;
+    min-width: 100px;
+    height: auto;
+    border: 6px solid #fff;
+    border-radius: 50%;
+    display: block;
+    margin-bottom: 12px;      /* space between image and text */
+}
+
+.icon-wrap p {
+    margin: 0;
+    text-decoration: none;    
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(255, 238, 0, 0.8);
+    font-weight: 600;
+    font-size: 1.2rem;   /* increased font size */
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+
+}
+
+
+
+
+
+
