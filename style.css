@@ -91,11 +91,15 @@ a{
     margin: 1rem 0 2rem 0;
 }
 nav {
-      background-color: #333;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: flex-start;
-    }
+  background-color: rgba(255, 196, 0, 0.678);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;  /* centers horizontally */
+  align-items: center;      /* centers vertically */
+  font-size: 1.5rem;        /* makes text bigger */
+  font-weight: bold;        /* optional: makes text bolder */
+}
+
     nav a {
       color: white;
       text-decoration: none;
@@ -104,7 +108,7 @@ nav {
       transition: color 0.3s;
     }
     nav a:hover {
-      color: #ffcc00; /* barva po najetí */
+      color: #044904; /* barva po najetí */
     }
 
     iframe,
