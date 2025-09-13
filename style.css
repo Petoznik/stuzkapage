@@ -223,6 +223,126 @@ html, body {
     font-size: clamp(1rem, 2vw, 1.5rem);
 
 }
+/* základní nastavení stránky */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  flex: 1; /* odtlačí footer dolů */
+  padding: 20px;
+}
+
+/* základní nastavení stránky */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  flex: 1; /* odtlačí footer dolů */
+  padding: 20px;
+}
+
+/* ikonky */
+.ftig {
+  height: 30px;   /* velikost ikonek */
+  width: 30px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.ftig:hover {
+  transform: scale(1.15);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  padding: 20px;
+  padding-bottom: 50px; /* rezervace místa pro footer */
+}
+
+/* Footer pevně dole */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 50px;                
+  width: 100%;
+  background-color: rgba(255, 196, 0, 0.678);
+  
+  display: flex;
+  justify-content: center;     
+  align-items: center;         
+  gap: 20px;                   
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1000;
+  
+  padding: 0 20px;             
+}
+
+/* Text */
+.copy {
+  margin: 0;
+  line-height: 50px;           /* přesně stejné jako výška footeru */
+}
+
+/* Ikonky */
+.socials {
+  display: flex;
+  align-items: center;         
+  gap: 10px;
+}
+
+.ftig {
+  height: 30px;                /* mírně menší než footer */
+  width: 30px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.ftig:hover {
+  transform: scale(1.15);
+}
+
+/* Responzivní pro mobil */
+@media (max-width: 500px) {
+  footer {
+    flex-direction: column;
+    height: auto;               
+    gap: 5px;
+    padding: 5px 20px;
+  }
+  
+  .copy {
+    line-height: normal;        /* aby text nebyl příliš vysoký */
+  }
+}
+
+
+
+
 
 
 
