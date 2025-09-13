@@ -281,42 +281,125 @@ main {
   padding-bottom: 50px; /* rezervace místa pro footer */
 }
 
-/* Footer pevně dole */
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: 50px;                
-  width: 100%;
-  background-color: rgba(255, 196, 0, 0.678);
-  
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.wrapper {
+  min-height: 100%;
   display: flex;
-  justify-content: center;     
-  align-items: center;         
-  gap: 20px;                   
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* vytlačí footer dolů, pokud je obsah krátký */
+  padding: 20px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.wrapper {
+  min-height: 100vh;          /* celá výška okna */
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;                     /* vytlačí footer dolů, pokud je obsah krátký */
+  padding: 20px;
+}
+
+/* Reset stylů a odstranění mezer */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.wrapper {
+  min-height: 100vh;           /* zajistí, že wrapper má vždy výšku okna */
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;                      /* vytlačí footer dolů, pokud je obsah krátký */
+  padding: 20px;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin: 0;
+}
+
+/* Footer */
+footer {
+  height: 50px;                
+  background-color: rgba(255, 196, 0, 0.678);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
-  z-index: 1000;
-  
-  padding: 0 20px;             
+  padding: 0 20px;             /* pouze horizontální padding */
+  margin-top: auto;             /* footer vždy úplně dole */
 }
 
-/* Text */
 .copy {
-  margin: 0;
-  line-height: 50px;           /* přesně stejné jako výška footeru */
+  margin: 0;                    /* žádný line-height */
 }
 
-/* Ikonky */
 .socials {
   display: flex;
-  align-items: center;         
+  align-items: center;
   gap: 10px;
 }
 
 .ftig {
-  height: 30px;                /* mírně menší než footer */
+  height: 30px;
   width: 30px;
   object-fit: contain;
   transition: transform 0.2s ease;
@@ -326,19 +409,16 @@ footer {
   transform: scale(1.15);
 }
 
-/* Responzivní pro mobil */
+/* Mobilní responzivní */
 @media (max-width: 500px) {
   footer {
     flex-direction: column;
-    height: auto;               
+    height: auto;
     gap: 5px;
     padding: 5px 20px;
   }
-  
-  .copy {
-    line-height: normal;        /* aby text nebyl příliš vysoký */
-  }
 }
+
 
 
 
