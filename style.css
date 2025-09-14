@@ -1,436 +1,384 @@
 
-h1{
-    font-size: 2.4rem;
-    font-weight: 800;
-    margin: 1rem 0;
-    line-height: 1.1;
-    /* gradient text for a striking different color while keeping contrast */
-    background: linear-gradient(90deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 2px 6px rgba(255, 238, 0, 0.801);
-    text-underline-offset: 10px; color: whitesmoke;
-    text-underline-position: below; text-decoration: underline  rgb(255, 255, 255);
+/* ============================
+   Base & Variables
+   ============================ */
+:root {
+  /* Background accents and dark base */
+  --bg-accent-1: rgba(120, 86, 255, 0.10);  /* violet */
+  --bg-accent-2: rgba(0, 200, 255, 0.08);   /* cyan */
+  --bg-dark-1: #0b1020;  /* deeper, richer base */
+  --bg-dark-2: #0e1426;
+  --bg-dark-3: #101830;
 
-    
+  /* Text colors */
+  --text: #f6f7fb;         /* primary text */
+  --text-soft: #e6e9f2;    /* softer text */
+  --text-muted: #b7bfd6;
+
+  /* Brand / accent */
+  --brand: #ffd166;        /* warm amber */
+  --brand-700: #ffb703;    /* darker hover */
+  --link: #ffd166;
+
+  /* Surfaces (lighter glass) */
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.12);
+  --border-color: rgba(255, 255, 255, 0.16);
+  --shadow: 0 8px 20px rgba(0,0,0,0.30);
 }
-/* full-page background: layered gradients with subtle motion */
+
+* { box-sizing: border-box; }
+
 html, body {
-    height: 100%;
-}
-
-body {
-    position: relative;
-    min-height: 100vh;
-    color: whitesmoke;
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-}
-
-body::before{
-    /* moving colored highlights using two soft radial gradients over a dark base */
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    background:
-        radial-gradient(circle at 10% 20%, rgba(255,100,180,0.08), transparent 15%),
-        radial-gradient(circle at 80% 80%, rgba(100,180,255,0.06), transparent 20%),
-        linear-gradient(135deg, #0d0f17 0%, #0f1116 30%, #101217 60%, #0d0f17 100%);
-    background-size: 200% 200%, 200% 200%, 100% 100%;
-    filter: saturate(110%) contrast(105%);
-    animation: bg-ozone 20s linear infinite;
-}
-
-body::after{
-    /* subtle vignette to focus content */
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.45) 100%);
-}
-
-@keyframes bg-ozone{
-    0%{ background-position: 0% 0%, 0% 0%, 0% 0%; }
-    50%{ background-position: 100% 50%, 50% 100%, 0% 0%; }
-    100%{ background-position: 0% 0%, 0% 0%, 0% 0%; }
-}
-p{
-    color: #ffffff; /* warm readable color on dark background */
-    font-size: 1.1rem;
-    line-height: 1.45;
-    font-weight: 500;
-    margin: 0 0 1rem 0;
-    max-width: 70ch;
-    text-shadow: 0 1px 2px rgb(255, 238, 0, 0.801);
-}
-a{
-    color:rgb(255, 196, 0);
-}
-/* container for the animated rainbow border */
-.rainbow{
-    display: inline-block;
-    padding: 6px; /* space for the border */
-    border-radius: 12px;
-    position: relative;
-    margin: 8px;
-    transform-origin: center center;
-    /* rotate the whole container (border + image) */
-    animation: spin 12s linear infinite;
-}
-
-/* gallery layout: side-by-side, responsive wrapping */
-.gallery{
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
-    margin: 1rem 0 2rem 0;
-}
-nav {
-  position: fixed;
-  width: 100%;
-  height: 20px;
-  background-color: rgba(255, 196, 0, 0.678);
-  padding: 10px 20px;
-  display: flex;
-  justify-content: center;  /* centers horizontally */
-  align-items: center;      /* centers vertically */
-  font-size: 1.5rem;        /* makes text bigger */
-  font-weight: bold;        /* optional: makes text bolder */
-}
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-right: 20px;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #044904; /* barva po najetí */
-    }
-
-    iframe,
-img {
-  display: block;
-  max-width: 90%;   /* responsive, fills screen but keeps margin */
-  height: auto;     /* keeps aspect ratio */
- 
-  
-}
-
-/* wrapper to push footer down */
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
   margin: 0;
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  color: var(--text-soft);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: dark; /* better form controls in dark bg */
+  padding-top: 64px; /* space for fixed nav */
+}
+
+/* Background layers */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(800px 600px at 15% 20%, var(--bg-accent-1), transparent 60%),
+    radial-gradient(900px 700px at 80% 80%, var(--bg-accent-2), transparent 60%),
+    linear-gradient(135deg, var(--bg-dark-1) 0%, var(--bg-dark-2) 30%, var(--bg-dark-3) 60%, var(--bg-dark-1) 100%);
+  background-size: 200% 200%, 200% 200%, 100% 100%;
+  filter: saturate(110%) contrast(105%);
+  animation: bg-ozone 20s linear infinite;
+}
+
+body::after{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.45) 100%);
+}
+
+@keyframes bg-ozone{
+  0%{ background-position: 0% 0%, 0% 0%, 0% 0%; }
+  50%{ background-position: 100% 50%, 50% 100%, 0% 0%; }
+  100%{ background-position: 0% 0%, 0% 0%, 0% 0%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
+
+/* ============================
+   Typography & Links
+   ============================ */
+h1{
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-left: 50px;
+  line-height: 1.1;
+  background: linear-gradient(90deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 6px rgba(255, 238, 0, 0.801);
+}
+
+p{
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1.45;
+  font-weight: 500;
+  margin: 1px 1px 1rem 5px;
+  margin-left: 55px;
+  max-width: 70ch;
+  text-shadow: 0 1px 2px rgba(255, 238, 0, 0.801);
+}
+
+a{ color: var(--link); text-decoration: none; }
+a:hover { color: var(--brand-700); }
+
+/* ============================
+   Layout
+   ============================ */
 main {
-  flex: 1; /* takes remaining space */
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 
-.mapy1, .mapy2 {
-  text-align: center;
-  margin-top: 2%;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #ffffff;
-  text-shadow: 0 2px 6px rgba(255, 238, 0, 0.801);
+/* Fixed top navigation */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: var(--surface);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  backdrop-filter: blur(10px) saturate(120%);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  padding: 8px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: bold;
+  z-index: 1000;
 }
 
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin-right: min(4vw, 24px);
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  transition: color 0.3s ease;
+}
+nav a:hover { color: #044904; }
+nav a:hover { color: var(--brand); }
 
-/* container for iframe + img */
+/* ============================
+   Media helpers
+   ============================ */
+iframe,
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Container for iframe + img */
 .media {
-  width: 90%;        /* take up to 90% of screen width */
-  max-width: 1200px; /* prevent them from being too huge */
-  aspect-ratio: 16 / 9; /* keep consistent ratio */
-  overflow: hidden;  /* makes rounded corners apply */
+  width: 90%;
+  max-width: 1200px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin: 12px auto; /* center block horizontally */
 }
 
-/* iframe and img inside container fill the same size */
 .media iframe,
 .media img {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover; /* keeps image filling nicely */
-  border: none;      /* remove default iframe border */
-}
-html, body {
-  height: 100%;
-  margin: 0;
+  object-fit: cover;
+  border: none;
+  border-radius: 12px; /* subtle rounding to match centered look */
 }
 
+/* Gallery page grid (galerie.html) */
+.gallery-grid {
+  width: 90%;
+  max-width: 1200px;
+  margin: 12px auto 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px; /* slightly bigger gap between pictures */
+}
 
-.copy {
-  padding-left: 15px;
-  font-size: 1,2rem;
-  color: #ffffff;
+.gallery-grid .galerie {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;   /* make all items the same size (square) */
+  object-fit: cover;      /* crop to fit nicely */
+  display: block;
+  margin: 0;              /* grid handles spacing */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 900px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+
+/* Map labels */
+.mapy1, .mapy2 {
+  text-align: center;
+  margin: 6px auto 0; /* bring text a bit closer to media */
+  width: 90%;          /* match .media width */
+  max-width: 1200px;   /* match .media max-width */
+  /* override global p max-width: 70ch */
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
   text-shadow: 0 2px 6px rgba(255, 238, 0, 0.801);
-
 }
 
+/* ============================
+   Sponsors (sponzoři.html)
+   ============================ */
+.sponsor-card {
+  display: flex;
+  flex-direction: column;         /* stack text under image */
+  align-items: flex-start;        /* align with start of text (left edge) */
+  gap: 8px;                       /* smaller space between photo and name */
+  margin-top: 16px;
+  margin-left: 55px;              /* align block with start of main paragraph text */
+}
+
+.sponsor-photo {
+  width: 180px;                   /* slightly bigger image */
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+.sponsor-info {
+  display: flex;
+  align-items: center;            /* keep name and icon on same line */
+  justify-content: flex-start;    /* align with left edge */
+  gap: 8px;
+}
+
+.sponsor-name {
+  margin: 0;                      /* remove default p margins */
+  margin-left: 0;                 /* override global p left margin */
+  max-width: none;                /* override global p max-width */
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--text);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.sponsor-ig {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+/* ============================
+   Social icons page
+   ============================ */
 .tiktok, .instagram {
   border: 6px solid #ffffff;
   border-radius: 200px;
   width: 300px;
   height: auto;
 }
+
 .social-icons {
-    display: flex;
-    flex-wrap: wrap;          /* allows wrapping on small screens */
-    gap: 40px;                /* space between each icon+text */
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
 }
 
 .icon-wrap {
-    display: flex;
-    flex-direction: column;   /* stack image + text vertically */
-    align-items: center;      /* center text under image */
-    text-align: center;
-    text-decoration: none;    /* remove underline for link */
-    color: #fff;              /* text color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
 }
 
 .icon-wrap img {
-    width: 20vw;              /* responsive size */
-    max-width: 300px;
-    min-width: 100px;
-    height: auto;
-    border: 6px solid #fff;
-    border-radius: 50%;
-    display: block;
-    margin-bottom: 12px;      /* space between image and text */
+  width: 20vw;
+  max-width: 300px;
+  min-width: 100px;
+  height: auto;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  display: block;
+  margin-bottom: 12px;
 }
 
 .icon-wrap p {
-    margin: 0;
-    text-decoration: none;    
-    color: #fff;
-    text-shadow: 0 2px 6px rgba(255, 238, 0, 0.8);
-    font-weight: 600;
-    font-size: 1.2rem;   /* increased font size */
-    text-align: center;
-    font-size: clamp(1rem, 2vw, 1.5rem);
-
-}
-/* základní nastavení stránky */
-html, body {
-  height: 100%;
   margin: 0;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(255, 238, 0, 0.8);
+  font-weight: 600;
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  font-family: Arial, sans-serif;
-}
-
-main {
-  flex: 1; /* odtlačí footer dolů */
-  padding: 20px;
-}
-
-/* základní nastavení stránky */
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  font-family: Arial, sans-serif;
-}
-
-main {
-  flex: 1; /* odtlačí footer dolů */
-  padding: 20px;
-}
-
-/* ikonky */
-.ftig {
-  height: 30px;   /* velikost ikonek */
-  width: 30px;
-  object-fit: contain;
-  transition: transform 0.2s ease;
-}
-
-.ftig:hover {
-  transform: scale(1.15);
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: Arial, sans-serif;
-}
-
-main {
-  padding: 20px;
-  padding-bottom: 50px; /* rezervace místa pro footer */
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-.wrapper {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1; /* vytlačí footer dolů, pokud je obsah krátký */
-  padding: 20px;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-.wrapper {
-  min-height: 100vh;          /* celá výška okna */
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;                     /* vytlačí footer dolů, pokud je obsah krátký */
-  padding: 20px;
-}
-
-/* Reset stylů a odstranění mezer */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-.wrapper {
-  min-height: 100vh;           /* zajistí, že wrapper má vždy výšku okna */
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;                      /* vytlačí footer dolů, pokud je obsah krátký */
-  padding: 20px;
-  margin: 0;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-.wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-  padding: 20px;
-  margin: 0;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-.wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-  padding: 20px;
-  margin: 0;
-}
-
-/* Footer pevně dole */
+/* Footer */
 footer {
   margin-top: auto;
-  bottom: 0;
-  left: 0;
-  height: 50px;                
+  height: 56px;
   width: 100%;
-  background-color: rgba(255, 196, 0, 0.678);
-  
+  background-color: var(--surface-strong);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  backdrop-filter: blur(8px) saturate(120%);
+  border-top: 1px solid var(--border-color);
   display: flex;
-  justify-content: center;     
-  align-items: center;         
-  gap: 20px;                   
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
   z-index: 1000;
-  
-  padding: 0 20px;             
+  padding: 0 20px;
 }
 
-/* Text */
 .copy {
   margin: 0;
-  line-height: 50px;           /* přesně stejné jako výška footeru */
+  padding-left: 15px;
+  line-height: 56px;
+  font-size: 1.2rem; /* fixed 1,2rem -> 1.2rem */
+  color: var(--text);
+  text-shadow: 0 2px 6px rgba(255, 238, 0, 0.801);
 }
 
-/* Ikonky */
 .socials {
   display: flex;
-  align-items: center;         
+  align-items: center;
   gap: 10px;
 }
 
 .ftig {
-  height: 30px;                /* mírně menší než footer */
+  height: 30px;
   width: 30px;
   object-fit: contain;
   transition: transform 0.2s ease;
 }
+.ftig:hover { transform: scale(1.15); }
 
-.ftig:hover {
-  transform: scale(1.15);
-}
-
-/* Responzivní pro mobil */
+/* ============================
+   Responsive
+   ============================ */
 @media (max-width: 500px) {
   footer {
     flex-direction: column;
-    height: auto;               
+    height: auto;
     gap: 5px;
     padding: 5px 20px;
   }
-  
-  .copy {
-    line-height: normal;        /* aby text nebyl příliš vysoký */
-  }
+  .copy { line-height: normal; }
+}
+
+/* ============================
+   Mobile tweaks
+   ============================ */
+@media (max-width: 700px) {
+  h1 { margin-left: 20px; font-size: clamp(1.8rem, 6vw, 2.2rem); }
+  p  { margin-left: 24px; margin-right: 16px; font-size: 1rem; }
+  nav { height: 60px; padding: 6px 14px; }
+  body { padding-top: 60px; }
+  .sponsor-card { margin-left: 24px; align-items: flex-start; }
+  .sponsor-photo { width: 150px; height: 150px; }
 }
