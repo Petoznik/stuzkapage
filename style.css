@@ -126,7 +126,7 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  min-height: 64px;             /* allow nav to grow if it wraps */
   background-color: var(--surface);
   -webkit-backdrop-filter: blur(10px) saturate(120%);
   backdrop-filter: blur(10px) saturate(120%);
@@ -139,12 +139,15 @@ nav {
   font-size: clamp(1.1rem, 2vw, 1.3rem);
   font-weight: bold;
   z-index: 1000;
+  flex-wrap: wrap;              /* allow wrapping on small screens */
+  gap: 6px 16px;               /* consistent spacing when wrapped */
 }
 
 nav a {
   color: var(--text);
   text-decoration: none;
-  margin-right: min(4vw, 24px);
+  margin-right: 0;              /* spacing handled by nav gap */
+  padding: 6px 10px;            /* larger tap targets for touch */
   font-size: clamp(0.95rem, 1.8vw, 1.05rem);
   transition: color 0.3s ease;
 }
@@ -202,11 +205,11 @@ img {
 }
 
 @media (max-width: 900px) {
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 }
 
 @media (max-width: 520px) {
-  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; gap: 16px; }
 }
 
 /* Map labels */
@@ -377,8 +380,15 @@ footer {
 @media (max-width: 700px) {
   h1 { margin-left: 20px; font-size: clamp(1.8rem, 6vw, 2.2rem); }
   p  { margin-left: 24px; margin-right: 16px; font-size: 1rem; }
-  nav { height: 60px; padding: 6px 14px; }
-  body { padding-top: 60px; }
+  nav { min-height: 60px; padding: 6px 14px; }
+  body { padding-top: 84px; } /* extra space for potential 2-line nav */
   .sponsor-card { margin-left: 24px; align-items: flex-start; }
   .sponsor-photo { width: 150px; height: 150px; }
+}
+
+/* Extra-small devices: tighten nav spacing a bit more */
+@media (max-width: 360px) {
+  nav { gap: 4px 10px; }
+  nav a { padding: 4px 8px; font-size: 0.95rem; }
+  body { padding-top: 100px; } /* account for tighter, multi-line nav */
 }
