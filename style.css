@@ -228,13 +228,24 @@ img {
 /* ============================
    Sponsors (sponzoři.html)
    ============================ */
+.sponsors-row {
+  display: flex;
+  flex-wrap: nowrap;             /* keep cards on one row on desktop */
+  gap: 25px;                     /* requested gap between cards */
+  align-items: flex-start;
+  justify-content: flex-start;   /* align first image with start of text */
+  margin: 16px 55px 0 55px;      /* align with surrounding copy */
+  overflow-x: auto;              /* allow scroll if viewport is too narrow */
+  -webkit-overflow-scrolling: touch;
+}
+
 .sponsor-card {
   display: flex;
   flex-direction: column;         /* stack text under image */
-  align-items: flex-start;        /* align with start of text (left edge) */
+  align-items: center;            /* center content under the image */
   gap: 8px;                       /* smaller space between photo and name */
   margin-top: 16px;
-  margin-left: 55px;              /* align block with start of main paragraph text */
+  flex: 0 0 auto;                 /* prevent shrinking; keep fixed card width */
 }
 
 .sponsor-photo {
@@ -249,7 +260,7 @@ img {
 .sponsor-info {
   display: flex;
   align-items: center;            /* keep name and icon on same line */
-  justify-content: flex-start;    /* align with left edge */
+  justify-content: center;        /* center name + icon under image */
   gap: 8px;
 }
 
@@ -261,6 +272,7 @@ img {
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   color: var(--text);
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  text-align: center;             /* center the name text */
 }
 
 .sponsor-ig {
@@ -388,7 +400,8 @@ footer {
   p  { margin-left: 24px; margin-right: 16px; font-size: 1rem; }
   nav { min-height: 60px; padding: 6px 14px; }
   body { padding-top: 84px; } /* extra space for potential 2-line nav */
-  .sponsor-card { margin-left: 24px; align-items: flex-start; }
+  .sponsors-row { margin: 12px 24px 0 24px; gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .sponsor-card { align-items: center; }
   .sponsor-photo { width: 150px; height: 150px; }
 }
 
