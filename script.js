@@ -6,6 +6,15 @@
   }
 
   ready(function () {
+    const navLinks = Array.from(document.querySelectorAll('nav a'));
+    const currentPath = decodeURIComponent(window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    navLinks.forEach((link) => {
+      const linkPath = decodeURIComponent((link.getAttribute('href') || '').split('/').pop()).toLowerCase();
+      if (linkPath === currentPath) {
+        link.classList.add('active');
+      }
+    });
+
     const enlargeables = Array.from(document.querySelectorAll('img.enlarge'));
     if (enlargeables.length === 0) return;
 
